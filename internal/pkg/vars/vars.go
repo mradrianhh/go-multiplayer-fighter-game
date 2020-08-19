@@ -17,6 +17,7 @@ const (
 	Authentication = "AUTHENTICATION"
 	Event          = "EVENT"
 	Registration   = "REGISTRATION"
+	Termination = "TERMINATION"
 )
 
 // ResponseCode ...

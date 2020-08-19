@@ -14,6 +14,9 @@ var msgPlayerAlreadyLoggedIn = models.NewMessage(vars.Confirmation, ErrPlayerAlr
 var msgAccepted = models.NewMessage(vars.Confirmation, "", vars.Accepted, "")
 var msgPlayerAlreadyExists = models.NewMessage(vars.Confirmation, ErrPlayerAlreadyExists.Error(), vars.NotAccepted, "")
 
+// Announcement messages
+var msgTermination = models.NewMessage(vars.Termination, "", "", "")
+
 func newMsgPlayerRegistered(username string) models.Message {
 	return models.NewMessage(vars.Confirmation, username+" registered.", vars.Accepted, "")
 }

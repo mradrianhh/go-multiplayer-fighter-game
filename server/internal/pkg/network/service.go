@@ -49,6 +49,13 @@ func Run() {
 	go listen()
 }
 
+// Broadcast sends a message to all connections registered with the server.
+func Broadcast(message models.Message) {
+	for _, conn := range AuthenticatedConns {
+		sendMessage(message, conn)
+	}
+}
+
 func listen() {
 	tcpAddr, err := net.ResolveTCPAddr(network, service)
 	checkError(err)

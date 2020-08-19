@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/mradrianhh/go-multiplayer-fighter-game/internal/pkg/vars"
+
+	"github.com/mradrianhh/go-multiplayer-fighter-game/server/internal/pkg/models"
 	"github.com/mradrianhh/go-multiplayer-fighter-game/server/internal/pkg/network"
 )
 
@@ -33,8 +36,7 @@ func ShowMainMenu() {
 			case 6:
 				ShowAuthenticatedConnections()
 			case 0:
-				Clear()
-				os.Exit(0)
+				Quit()
 			default:
 				fmt.Println("Sorry, I can't understand...")
 			}
@@ -128,4 +130,11 @@ func ShowAuthenticatedConnections() {
 	} else {
 		fmt.Println("No connections to show.")
 	}
+}
+
+// Quit closes the server.
+func Quit() {
+	network.Broadcast(models.NewMessage(vars.Termination, "", "", ""))
+	Clear()
+	os.Exit(0)
 }
